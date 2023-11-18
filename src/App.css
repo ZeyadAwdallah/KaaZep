@@ -1,0 +1,132 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  user-select: none;
+}
+
+#logo {
+  margin-bottom: 1em;
+}
+
+#logo {
+  height: 6em;
+  padding: .5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+#logo:hover {
+  filter: drop-shadow(0 0 2em #616272aa);
+}
+#logo.react:hover {
+  filter: drop-shadow(0 0 2em #b9c0c2aa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+
+.card {
+  display: grid;
+  width: 280px;
+  height: 150px;
+  padding: 1em;
+  grid-gap: 7px; 
+}
+.player {
+border: 2px solid #888;
+border-radius: 4px;
+padding: .5rem;
+}
+.player p {
+   font-size:1.1em ;
+   font-weight:600;
+}
+.players{
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+grid-auto-rows: auto;
+grid-gap: 1rem;
+}
+
+
+.stage {
+border: 2px solid #888;
+border-radius: 4px;
+padding: .5rem;
+font-size:1.1em ;
+font-weight:600;
+transition: border-color 0.25s;
+}
+.stage:hover {
+border: 2px solid #ffffff;
+}
+.stages{
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+grid-auto-rows: auto;
+grid-gap: 1rem;
+}
+
+.read-the-docs {
+  color: #888;
+}
+.Welcome{
+  font-size: 1.4rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+#start{
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.3em 1em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #807c7c;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  font-weight: 600;
+}
+#start:hover {
+  border-color: #1a1a1a;
+}
+#start:focus,
+#start:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+.next {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 1em 6em;
+  font-size: 1.1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #201f1f;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.next:hover {
+  border-color: rgb(74, 72, 72);
+}
+.next:focus,
+.next:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
