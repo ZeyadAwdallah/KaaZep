@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 function HomeScreen({
   onGameStart,
   setPlayers,
@@ -12,36 +12,38 @@ function HomeScreen({
   setUsers: React.Dispatch<React.SetStateAction<{ name: string; Id: number; score: number; Imposter: boolean }[]>>
   Users: { name: string; Id: number; score: number; Imposter: boolean }[]
 }) {
-  
-    useEffect(() => {
-      Users = handleUsers()
-      setUsers(Users)
-    }, [players])
- 
+
+  useEffect(() => {
+    Users = handleUsers()
+    setUsers(Users)
+  }, [players])
+
   const [playerName, setPlayerName] = useState<string>('')
   let i = 0
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPlayerName(e.target.value)
   }
-   function generateId() {
-     return i++
-   }
-  function handleUsers() {
-    return players.map((player) => ({
-      name: player,
-      Id: generateId(),
-      score: 0,
-      Imposter: false,
-    }))
+  function generateId() {
+    return i++
   }
-  
+
+  function handleUsers() {
+    return players.map((player) => {
+      const existingUser = Users.find((user) => user.name === player);
+      return existingUser
+        ? { ...existingUser }
+        : { name: player, Id: generateId(), score: 0, Imposter: false };
+    });
+  }
+
+
   const playerNameSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!playerName.trim()) {
       return
     }
     setPlayers([...players, playerName])
-    
+
     setPlayerName('')
   }
 
