@@ -24,8 +24,6 @@ function App() {
     if (Users.length > 2) {
       theImposter()
       setCurrentScreen(Screen.Stages)
-    } else {
-      alert('You need at least three Players to start')
     }
   }
 
