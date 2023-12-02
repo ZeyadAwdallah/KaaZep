@@ -14,18 +14,13 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: 'Kaazep.svg',
-            sizes: '64x64 32x32 24x24 16x16',
-            type: 'image/x-icon',
-          },
-          {
-            src: 'Kaazep.svg',
-            type: 'image/svg+xml', 
+            src: 'manifest-icon-192.maskable.png',
+            type: 'image', 
             sizes: '192x192',
           },
           {
-            src: 'Kaazep.svg',
-            type: 'image/svg+xml', 
+            src: 'manifest-icon-512.maskable.png',
+            type: 'image', 
             sizes: '512x512',
           },
         ],
