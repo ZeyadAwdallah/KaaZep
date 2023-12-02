@@ -19,12 +19,14 @@ function HomeScreen({
   }, [players])
 
   const [playerName, setPlayerName] = useState<string>('')
-  let i = 0
+  const [Id, setId] = useState<number>(0)
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPlayerName(e.target.value)
   }
   function generateId() {
-    return i++
+    setId(Id+1)
+    return Id
   }
 
   function handleUsers() {

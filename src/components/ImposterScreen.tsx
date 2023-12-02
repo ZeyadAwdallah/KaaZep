@@ -10,7 +10,7 @@ function ImposterScreen({
   Userz: { name: string; Id: number; score: number; Imposter: boolean }[]
 }) {
   const imposterUser = Userz.find((user) => user.Imposter === true);
-
+  console.log(imposterUser,Userz)
   function handelImposterScore(name: string) {
     if (name === quest && imposterUser) {
     Userz[imposterUser.Id].score += 100;
