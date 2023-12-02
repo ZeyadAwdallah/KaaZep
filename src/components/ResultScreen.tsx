@@ -11,12 +11,15 @@ function ResultScreen({
         {Userz.map((user, index) => (
           <div className="stage" key={index}>
             <p>
-              {user.name} - {user.score}
+             اللعيب : {user.name}
+            </p>
+            <p>
+            جاب : {user.score} نقطة
             </p>
           </div>
         ))}
         <button className="next" onClick={() => setNextScreen()}>
-          New Game
+          جيم جديد
         </button>
       </div>
     </>

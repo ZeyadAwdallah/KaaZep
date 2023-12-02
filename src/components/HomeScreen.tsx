@@ -55,34 +55,34 @@ function HomeScreen({
 
   return (
     <div>
-      <img src="/Secret-Z.Svg" alt="" id="logo" />
-      <p className="Welcome">Welcome To Our Game</p>
-      <p>You need at least three Players to start</p>
+      <img src="./Kaazep.svg" alt="" id="logo" />
+      <p className="Welcome">أهلا بيك في لعبتنا</p>
+      <p>عشان تلعب لازم تكونوا علي الاقل ٣</p>
       <form onSubmit={playerNameSubmit}>
         <div className="card">
           <input
             type="text"
             id="players"
             minLength={3}
-            maxLength={14}
+            maxLength={15}
             value={playerName}
             onChange={handleInputChange}
           />
 
-          <button type="submit">ADD</button>
+          <button type="submit">ضيف لاعب</button>
           <button id="start" onClick={onGameStart}>
-            Start
+            ابدأ
           </button>
         </div>
       </form>
       <div>
-        <h2>Players</h2>
+        <h2>اللعيبة</h2>
         <div className="players">
           {players.map((text, index) => (
             <div className="player" key={index}>
               <p>{text}</p>
               <button type="submit" onClick={() => playerDelete(index)}>
-                Delete
+                أمسح
               </button>
             </div>
           ))}

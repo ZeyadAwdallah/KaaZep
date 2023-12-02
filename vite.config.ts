@@ -8,23 +8,23 @@ export default defineConfig({
     react(),
     VitePWA({
       manifest: {
-        name: 'Secret-Z',
-        short_name: 'Secret-Z',
-        description: 'Who Is The Imposter',
-        theme_color: '#242424',
+        name: 'KaaZep',
+        short_name: 'KaaZep',
+        description: 'Who Is The KaaZep',
+        theme_color: '#ffffff',
         icons: [
           {
-            src: 'Secret-Zb.Svg',
+            src: 'Kaazep.svg',
             sizes: '64x64 32x32 24x24 16x16',
             type: 'image/x-icon',
           },
           {
-            src: 'Secret-Zb.Svg',
+            src: 'Kaazep.svg',
             type: 'image/svg+xml', 
             sizes: '192x192',
           },
           {
-            src: 'Secret-Zb.Svg',
+            src: 'Kaazep.svg',
             type: 'image/svg+xml', 
             sizes: '512x512',
           },

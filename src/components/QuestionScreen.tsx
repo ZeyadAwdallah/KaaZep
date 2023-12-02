@@ -26,7 +26,7 @@ function QuestionScreen({
   return (
     <>
       <h2>{Userz[currentIndex].name}</h2>
-      <h3>Plaese Ask</h3>
+      <h3>اسأله سؤال يكشفه ارجوك</h3>
 
       {currentIndex == Userz.length - 1 ? (
         <h2>{Userz[currentIndex - 1].name}</h2>
@@ -35,10 +35,10 @@ function QuestionScreen({
       )}
       <div className="card">
         <button className="next" onClick={() => idUpdater()}>
-          Next
+          اللي بعده
         </button>
         <button className="next" onClick={setNextScreen}>
-          Vote
+          صوت
         </button>
       </div>
     </>

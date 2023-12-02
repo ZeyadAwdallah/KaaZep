@@ -7,7 +7,7 @@ function VoteScreen({
   setNextScreen: () => void
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  function idUpdater(index:number) {
+  function ScoreUpdater(index:number) {
     if(Userz[index].Imposter==true){
       Userz[currentIndex].score = Userz[currentIndex].score + 100;
     }
@@ -19,12 +19,12 @@ function VoteScreen({
     <>
       <div className="stages">
         <h1>{Userz[currentIndex].name}</h1>
-        <h2>Who Is The Imposter</h2>
+        <h2>مين الكوز</h2>
         {Userz.map(
           (user, index) =>
             index != currentIndex && (
               <div className="stage" key={index}>
-                <p onClick={()=>idUpdater(index)}>{user.name}</p>
+                <p onClick={()=>ScoreUpdater(index)}>{user.name}</p>
               </div>
             )
         )}

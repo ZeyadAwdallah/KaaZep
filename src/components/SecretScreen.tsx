@@ -27,34 +27,34 @@ function SecretScreen({
 
   return (
     <>
-      {isTextVisible === false && <h3>Give The Phone To</h3>}
+      {isTextVisible === false && <h3>أدي العدة لـ</h3>}
       <h1>{Userz[currentIndex].name}</h1>
       {isTextVisible && (
         <div>
           {Userz[currentIndex].Imposter === false ? (
-            <h2>The Word Is: {quest}</h2>
+            <h2>  الكلمة اهي  :  {quest}</h2>
           ) : (
-            <h2>You Are The Imposter</h2>
+            <h2>انت الكاذب أحراج والله</h2>
           )}
         </div>
       )}
       {isTextVisible && (
         <div>
           {currentIndex < Userz.length - 1 ? (
-            <p>Pass The Phone To {Userz[currentIndex + 1].name}</p>
+            <p>باصي العدة   لـ{Userz[currentIndex + 1].name}</p>
           ) : (
-            <p>You Are The Last one Click Next *_*</p>
+            <p>و كنت الاخير معانا يلا ابدأ</p>
           )}
         </div>
       )}
       {isTextVisible && (
         <button className="next" onClick={() => idUpdater()}>
-          Next
+          اللي بعده
         </button>
       )}
       {isTextVisible == false && (
         <button className="next" onClick={() => Show()}>
-          Word
+          الكلمة يا غالي
         </button>
       )}
     </>
