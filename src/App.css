@@ -46,12 +46,18 @@
 .player {
 border: 2px solid #03d000;
 border-radius: 4px;
-padding: .5rem;
+
 }
-.player p {
-   font-size:1.1em ;
-   font-weight:600;
+#name{
+  margin-bottom: 0.5em;
+  margin-top: .5em;
+  font-size: 1.4em;
+  font-weight:600;
 }
+#delete{
+  margin-bottom: 1em;
+}
+
 .players{
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

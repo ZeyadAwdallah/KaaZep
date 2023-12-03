@@ -72,7 +72,7 @@ function HomeScreen({
             type="text"
             id="players"
             minLength={3}
-            maxLength={15}
+            maxLength={16}
             value={playerName}
             onChange={handleInputChange}
           />
@@ -88,8 +88,8 @@ function HomeScreen({
         <div className="players">
           {players.map((text, index) => (
             <div className="player" key={index}>
-              <p>{text}</p>
-              <button type="submit" onClick={() => playerDelete(index)}>
+              <p id="name">{text}</p>
+              <button type="submit" id="delete" onClick={() => playerDelete(index)}>
                 أمسح
               </button>
             </div>
