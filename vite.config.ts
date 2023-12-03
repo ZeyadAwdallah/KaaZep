@@ -14,12 +14,12 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: './manifest-icon-192.maskable.png',
+            src: './src/assets/icons/manifest-icon-192.maskable.png',
             type: 'image', 
             sizes: '192x192',
           },
           {
-            src: './manifest-icon-512.maskable.png',
+            src: './src/assets/icons/manifest-icon-512.maskable.png',
             type: 'image', 
             sizes: '512x512',
           },
