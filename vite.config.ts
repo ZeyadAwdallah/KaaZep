@@ -11,7 +11,7 @@ export default defineConfig({
         name: 'KaaZep',
         short_name: 'KaaZep',
         description: 'Who Is The KaaZep',
-        theme_color: '#05FF00',
+        theme_color: '#ffffff',
         icons: [
           {
             src: '/icons/manifest-icon-192.maskable.png',
