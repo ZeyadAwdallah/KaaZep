@@ -17,6 +17,10 @@ export default defineConfig({
             src: '/icons/manifest-icon-192.maskable.png',
             type: 'image/svg+xml', 
             sizes: '192x192',
+          },{
+            src: '/assets/icons/manifest-icon.svg',
+            type: 'image/svg+xml',
+            sizes: 'any',
           },
           {
             src: '/icons/manifest-icon-512.maskable.png',

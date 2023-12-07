@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react'
+
+caches.open("pwa-assets")
+.then(cache => {
+  cache.add("./Kaazep.svg");
+});
+
 function HomeScreen({
   onGameStart,
   setPlayers,
