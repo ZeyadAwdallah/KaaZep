@@ -54,9 +54,9 @@ function QuestionScreen({
         <button className="next" onClick={() => idUpdater()}>
           اللي بعده
         </button>
-        <button className="next" onClick={setNextScreen}>
-          صوت
-        </button>
+          <button className="next" onClick={setNextScreen}>
+            صوت
+          </button>
       </div>
     </>
   )

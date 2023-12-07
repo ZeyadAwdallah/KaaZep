@@ -57,16 +57,16 @@ function HomeScreen({
 
   return (
     <div>
+
+      <div>
       <img src="./Kaazep.svg" alt="" id="logo" />
-      {Users.length == 0 ? (
-        <div>
-          <p>مشروع تخرج  مادة السوفت وير</p>
-          <p>عبارة عن لعبة بيلف الموبايل عليكم فتحاول تعرف مين بيحور</p>
-        </div>
-      ) : null}
+      <p className='info'>لعبة الموبايل بيلف عليكم فتسأل فتعرف مين بيحور </p>
+      </div>
+     
+      <form onSubmit={playerNameSubmit}>
       <p className="Welcome">أهلا بيك في لعبتنا</p>
       <p>عشان تلعب لازم تكونوا علي الاقل ٣</p>
-      <form onSubmit={playerNameSubmit}>
+
         <div className="card">
           <input
             type="text"
