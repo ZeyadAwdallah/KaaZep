@@ -7,32 +7,49 @@ function QuestionScreen({
   setNextScreen: () => void
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [playerOne, setPlayerOne] = useState(0)
+  const [playerTwo, setPlayerTwo] = useState(1)
+
   function idUpdater() {
-    let prev: number = currentIndex
-    if (currentIndex == Userz.length - 1) {
-      const randomIndex = Math.floor(Math.random() * Userz.length)
-      if (prev == currentIndex) {
-        setCurrentIndex(randomIndex)
+
+    if (currentIndex == Userz.length) {
+      let randomIndexI = getRandomIndex();
+      let randomIndexII = getRandomIndex();
+
+      while (
+        randomIndexI === randomIndexII ||
+        (playerOne === randomIndexI && playerTwo === randomIndexII)
+      ) {
+        randomIndexI = getRandomIndex();
+        randomIndexII = getRandomIndex();
+      }
+
+      setPlayerOne(randomIndexI);
+      setPlayerTwo(randomIndexII);
+    }
+
+    else {
+      if (currentIndex < Userz.length - 1) {
+        setPlayerOne(currentIndex)
+        setPlayerTwo(currentIndex + 1)
+        setCurrentIndex(currentIndex + 1)
       } else {
+        setPlayerOne(currentIndex)
+        setPlayerTwo(0)
         setCurrentIndex(currentIndex + 1)
       }
-    } else {
-      prev == Userz.length - 1
-        ? setCurrentIndex(prev - 1)
-        : setCurrentIndex(prev + 1)
+
     }
+  }
+  function getRandomIndex() {
+    return Math.floor(Math.random() * Userz.length);
   }
 
   return (
     <>
-      <h2>{Userz[currentIndex].name}</h2>
+      <h2>{Userz[playerOne].name}</h2>
       <h3>اسأله سؤال يكشفه ارجوك</h3>
-
-      {currentIndex == Userz.length - 1 ? (
-        <h2>{Userz[currentIndex - 1].name}</h2>
-      ) : (
-        <h2>{Userz[currentIndex + 1].name}</h2>
-      )}
+      <h2>{Userz[playerTwo].name}</h2>
       <div className="card">
         <button className="next" onClick={() => idUpdater()}>
           اللي بعده
