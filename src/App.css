@@ -14,6 +14,7 @@
   padding: .5em;
   will-change: filter;
   transition: filter 300ms;
+  margin-top: 1em;
 }
 #details{
   margin-bottom: 2rem;
@@ -62,6 +63,7 @@ display: grid;
 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 grid-auto-rows: auto;
 grid-gap: 1rem;
+margin-bottom:1rem;
 }
 
 
