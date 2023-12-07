@@ -15,6 +15,9 @@
   will-change: filter;
   transition: filter 300ms;
 }
+#details{
+  margin-bottom: 2rem;
+}
 
 @keyframes logo-spin {
   from {
