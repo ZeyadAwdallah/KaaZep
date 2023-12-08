@@ -6,7 +6,7 @@ function QuestionScreen({
   Userz: { name: string; Id: number; score: number; Imposter: boolean }[]
   setNextScreen: () => void
 }) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(1)
   const [playerOne, setPlayerOne] = useState(0)
   const [playerTwo, setPlayerTwo] = useState(1)
 
