@@ -65,7 +65,7 @@ function HomeScreen({
     <div>
 
       <div id="details">
-      <img src="./Kaazep.svg" alt="" id="logo" />
+      <img src="./icons/Kaazep.svg" alt="" id="logo" />
       <p className='info'>لعبة الموبايل بيلف عليكم فتسأل فتعرف مين بيحور </p>
       </div>
      
