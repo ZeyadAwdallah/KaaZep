@@ -1,4 +1,4 @@
-# Secret-Z
+# KaaZep
 ## React + TypeScript + Vite + PWA
 
 This Is My First Project at React , TypeScript , Vite and my first time to create a PWA 
