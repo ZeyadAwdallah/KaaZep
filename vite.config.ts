@@ -12,8 +12,6 @@ export default defineConfig({
         short_name: 'KaaZep',
         description: 'Who Is The KaaZep',
         theme_color: '#ffffff',
-        background_color:'#05FF00'
-        ,
         icons: [
            {
             src: './icons/Kaazep.svg',
