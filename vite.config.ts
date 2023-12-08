@@ -12,10 +12,11 @@ export default defineConfig({
         short_name: 'KaaZep',
         description: 'Who Is The KaaZep',
         theme_color: '#ffffff',
-        background_color:"#05FF00",
+        background_color:'#05FF00'
+        ,
         icons: [
            {
-            src: '/assets/icons/manifest-icon.svg',
+            src: './icons/Kaazep.svg',
             type: 'image/svg+xml',
             sizes: 'any',
           }
