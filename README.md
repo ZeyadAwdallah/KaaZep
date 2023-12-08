@@ -1,7 +1,7 @@
 
 ![Logo](public/icons/Kaazep.svg)
 <div align="center">
-  <img src="./icons/Kaazep.svg" alt="Logo" width="200"/>
+  <img src="public/icons/Kaazep.svg" alt="Logo" width="200"/>
 </div>
 ## React + TypeScript + Vite + PWA
 
