@@ -2,6 +2,7 @@
 <div align="center">
   <img src="public/icons/Kaazep.svg" alt="Logo" width="500"/>
 </div>
+
 ## React + TypeScript + Vite + PWA
 
 This Is My First Project at React , TypeScript , Vite and my first time to create a PWA 
