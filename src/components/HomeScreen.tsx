@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 caches.open("pwa-assets")
 .then(cache => {
-  cache.add("./Kaazep.svg");
+  cache.add("./icons/Kaazep.svg");
 });
 
 function HomeScreen({
