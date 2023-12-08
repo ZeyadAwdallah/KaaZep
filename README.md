@@ -1,4 +1,4 @@
-# KaaZep
+
 ![Logo](public/icons/Kaazep.svg)
 
 ## React + TypeScript + Vite + PWA
