@@ -1,4 +1,6 @@
 # KaaZep
+![Logo](public/icons/Kaazep.svg)
+
 ## React + TypeScript + Vite + PWA
 
 This Is My First Project at React , TypeScript , Vite and my first time to create a PWA 
