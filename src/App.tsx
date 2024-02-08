@@ -32,7 +32,7 @@ function App() {
   }
   const handlenewGame = () => {
     setCurrentScreen(Screen.Home)
-    Users.map((user)=>user.Imposter=false)
+    Users.map((user) => (user.Imposter = false))
   }
 
   const handleRandomName = (randomName: string, names: string[]) => {
