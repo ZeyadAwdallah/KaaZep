@@ -1,9 +1,9 @@
-interface Category {
+interface category {
     category: string;
     names: string[];
 }
 
-const stages: Category[] = [
+const stages: category[] = [
     {
         category: 'أنمي',
         names: [
@@ -161,4 +161,4 @@ const stages: Category[] = [
     },
 ];
 
-export default stages;
+export  {stages} ;

@@ -38,16 +38,19 @@ button {
   font-family: inherit;
   background-color: #03d000;
   font-weight: 600;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  margin:2.5px;
+ cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
 }
 button:hover {
-  border-color: #ffffff;
-}
+      background-color: #02b300; 
+      transform: translateY(-2px);
+  }
 
 input[type=text]{
   border-radius: 8px;
   border: 1px solid transparent;
+  margin:5px;
   padding: 0.3em 1em;
   font-size: 1em;
   font-weight: 500;

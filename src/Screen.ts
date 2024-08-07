@@ -6,5 +6,6 @@ enum Screen {
   Vote,
   Imposter,
   Result,
+  Customize
 }
 export default Screen;

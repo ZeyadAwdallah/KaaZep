@@ -8,18 +8,29 @@ import VoteScreen from './components/VoteScreen'
 import ImposterScreen from './components/ImposterScreen'
 import Screen from './Screen'
 import './App.css'
+
+interface User {
+  name: string
+  Id: number
+  score: number
+  Imposter: boolean
+}
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>(Screen.Home)
   const [players, setPlayers] = useState<string[]>([])
   const [selectedStageNames, setSelectedStageNames] = useState<string[]>([])
   const [selectedQuest, setSelectedQuest] = useState<string>('')
-  const [Users, setUsers] = useState<
-    { name: string; Id: number; score: number; Imposter: boolean }[]
-  >([])
+  const [Users, setUsers] = useState<User[]>([])
+
   const theImposter = () => {
     const randomIndex = Math.floor(Math.random() * Users.length)
-    Users[randomIndex].Imposter = true
+    setUsers((users) =>
+      users.map((user, index) =>
+        index === randomIndex ? { ...user, Imposter: true } : user
+      )
+    )
   }
+
   const handleGameStart = () => {
     if (Users.length > 2) {
       theImposter()
@@ -30,9 +41,10 @@ function App() {
   const handleBack = () => {
     setCurrentScreen(Screen.Home)
   }
+
   const handlenewGame = () => {
     setCurrentScreen(Screen.Home)
-    Users.map((user) => (user.Imposter = false))
+    setUsers((users) => users.map((user) => ({ ...user, Imposter: false })))
   }
 
   const handleRandomName = (randomName: string, names: string[]) => {
@@ -40,19 +52,11 @@ function App() {
     setSelectedStageNames(names)
     setCurrentScreen(Screen.Secret)
   }
-  const QustionPage = () => {
-    setCurrentScreen(Screen.Question)
-  }
-  const ResultPage = () => {
-    setCurrentScreen(Screen.Result)
-  }
-  const VotePage = () => {
-    setCurrentScreen(Screen.Vote)
+
+  const navigateTo = (screen: Screen) => {
+    setCurrentScreen(screen)
   }
 
-  const ImposterPage = () => {
-    setCurrentScreen(Screen.Imposter)
-  }
   switch (currentScreen) {
     case Screen.Home:
       return (
@@ -76,18 +80,28 @@ function App() {
         <SecretScreen
           Userz={Users}
           quest={selectedQuest}
-          setNextScreen={QustionPage}
+          setNextScreen={() => navigateTo(Screen.Question)}
         />
       )
     case Screen.Question:
-      return <QuestionScreen Userz={Users} setNextScreen={VotePage} />
+      return (
+        <QuestionScreen
+          Userz={Users}
+          setNextScreen={() => navigateTo(Screen.Vote)}
+        />
+      )
     case Screen.Vote:
-      return <VoteScreen Userz={Users} setNextScreen={ImposterPage} />
+      return (
+        <VoteScreen
+          Userz={Users}
+          setNextScreen={() => navigateTo(Screen.Imposter)}
+        />
+      )
     case Screen.Imposter:
       return (
         <ImposterScreen
           quest={selectedQuest}
-          setNextScreen={ResultPage}
+          setNextScreen={() => navigateTo(Screen.Result)}
           selectedStage={selectedStageNames}
           Userz={Users}
         />
@@ -98,4 +112,5 @@ function App() {
       return <p>Loading</p>
   }
 }
+
 export default App

@@ -48,7 +48,7 @@ function QuestionScreen({
   return (
     <>
       <h2>{Userz[playerOne].name}</h2>
-      <h3>اسأله سؤال يكشفه ارجوك</h3>
+      <h3>اسأله سؤال وحاول توقعة</h3>
       <h2>{Userz[playerTwo].name}</h2>
       <div className="card">
         <button className="next" onClick={() => idUpdater()}>
