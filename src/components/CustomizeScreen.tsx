@@ -66,11 +66,16 @@ function CustomizeScreen({
 
   return (
     <div className="customize-screen">
-      <h2>تعديل الحزم</h2>
+      <div className='hero'>
+        <h2>تعديل الحزم</h2>
+        <p >هنا تقدر تضيف و تعدل او تمسح الحزم</p>
+      </div>
 
-      <div className='maininput'>
+      <div className="maininput">
         <input
           type="text"
+          minLength={1}
+          maxLength={15}
           value={newCategoryName}
           onChange={(e) => setNewCategoryName(e.target.value)}
           placeholder="اسم الحزمة الجديدة"
@@ -81,7 +86,7 @@ function CustomizeScreen({
       <div>
         {categories.map((category) => (
           <div className="category" key={category.category}>
-            <div className='inthesameline'>
+            <div className="inthesameline">
               <h3>{category.category}</h3>
               <button onClick={() => handleDeleteCategory(category.category)}>
                 امسح الحزمة{' '}
@@ -95,6 +100,8 @@ function CustomizeScreen({
                 <div className="inthesameline">
                   <input
                     type="text"
+                    minLength={1}
+                    maxLength={16}
                     value={newItemName}
                     onChange={(e) => setNewItemName(e.target.value)}
                     placeholder="العنصر الجديد"
