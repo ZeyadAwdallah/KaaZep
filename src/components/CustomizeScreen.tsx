@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './CustomizeScreen.css'
 
 interface category {
   category: string
@@ -69,13 +68,12 @@ function CustomizeScreen({
     <div className="customize-screen">
       <h2>تعديل الحزم</h2>
 
-      <div>
+      <div className='maininput'>
         <input
           type="text"
           value={newCategoryName}
           onChange={(e) => setNewCategoryName(e.target.value)}
           placeholder="اسم الحزمة الجديدة"
-          className="Maininput"
         />
         <button onClick={handleAddCategory}>ضيف حزمة</button>
       </div>
@@ -83,17 +81,18 @@ function CustomizeScreen({
       <div>
         {categories.map((category) => (
           <div className="category" key={category.category}>
-            <h3>{category.category}</h3>
-            <button onClick={() => handleDeleteCategory(category.category)}>
-              امسح الحزمة{' '}
-            </button>
-            <button onClick={() => setSelectedCategory(category.category)}>
-              عدل الحزمة
-            </button>
-
+            <div className='inthesameline'>
+              <h3>{category.category}</h3>
+              <button onClick={() => handleDeleteCategory(category.category)}>
+                امسح الحزمة{' '}
+              </button>
+              <button onClick={() => setSelectedCategory(category.category)}>
+                عدل الحزمة
+              </button>
+            </div>
             {selectedCategory === category.category && (
               <div>
-                <div className='inthesameline'>
+                <div className="inthesameline">
                   <input
                     type="text"
                     value={newItemName}

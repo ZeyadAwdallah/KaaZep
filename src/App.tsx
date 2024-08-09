@@ -7,7 +7,6 @@ import SecretScreen from './components/SecretScreen'
 import VoteScreen from './components/VoteScreen'
 import ImposterScreen from './components/ImposterScreen'
 import Screen from './Screen'
-import './App.css'
 
 interface User {
   name: string
