@@ -58,20 +58,20 @@ h1 {
   line-height: 1.1;
 }
 h2{
-    font-size: 2.5rem;
+  font-size: 2.5rem;
   color: var(--color-primary);
   margin-bottom: 1.5rem;
   text-align: center;
-    line-height: 1;
+  line-height: 1;
 }
 
 h3{
-    display: inline-block;
+  display: inline-block;
   margin: 0 1rem 1rem 0;
   font-size: 1.5rem;
   color: var(--color-primary);
   float: right;
-    line-height: 1;
+ line-height: 1;
 }
 button {
   border-radius: var(--border-radius);
@@ -264,27 +264,45 @@ margin: var(--spacing-xlarge) ;
 }
 
 .customize-screen .category {
-  margin-top:1rem;
-  margin-bottom:1rem;
+  margin: 1rem 0;
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: var(--border-radius-small);
   background-color: #fff;
-  width:91%;
+  width: 91%;
+  display: flex;
+  flex-direction: column;
 }
 
 .customize-screen .category h3 {
-  display: inline-block;
-  margin: 0 1rem 1rem 0;
-  float: right;
+  font-weight: var(--font-weight-bold);
+  margin: var(--spacing-xlarge) auto ;
+  font-size: 2em;
 }
 
 .customize-screen .category .button-container {
-  float: left;
+  margin-top: var(--spacing-xlarge); 
+  margin-bottom: var(--spacing-xlarge);
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-small);
 }
 
 .customize-screen .category .button-container button {
-  margin-right: 0.5rem;
+  margin: 0;
+  padding: var(--spacing-small) var(--spacing-medium);
+  font-size: var(--font-size-base);
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-medium), transform var(--transition-fast);
+}
+
+.customize-screen .category .button-container button:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
 }
 
 .customize-screen .category .item-list {
@@ -330,26 +348,11 @@ margin: var(--spacing-xlarge) ;
   margin: 0 0.5rem;
 }
 
-.inthesameline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.inthesameline input {
-  flex: 1;
-}
-
-.inthesameline button {
-  padding: var(--spacing-small) var(--spacing-medium);
-}
-
 .maininput{
   margin-bottom: var(--spacing-large);
 }
 .maininput input{
+  color: var(--color-primary);
   padding:8px;
   width:60%;
 }

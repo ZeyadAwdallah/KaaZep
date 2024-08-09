@@ -66,9 +66,9 @@ function CustomizeScreen({
 
   return (
     <div className="customize-screen">
-      <div className='hero'>
+      <div className="hero">
         <h2>تعديل الحزم</h2>
-        <p >هنا تقدر تضيف و تعدل او تمسح الحزم</p>
+        <p>هنا تقدر تضيف و تعدل او تمسح الحزم</p>
       </div>
 
       <div className="maininput">
@@ -86,8 +86,8 @@ function CustomizeScreen({
       <div>
         {categories.map((category) => (
           <div className="category" key={category.category}>
-            <div className="inthesameline">
-              <h3>{category.category}</h3>
+            <h3>{category.category}</h3>
+            <div className="button-container">
               <button onClick={() => handleDeleteCategory(category.category)}>
                 امسح الحزمة{' '}
               </button>
