@@ -11,24 +11,21 @@ function QuestionScreen({
   const [playerTwo, setPlayerTwo] = useState(1)
 
   function idUpdater() {
-
     if (currentIndex == Userz.length) {
-      let randomIndexI = getRandomIndex();
-      let randomIndexII = getRandomIndex();
+      let randomIndexI = getRandomIndex()
+      let randomIndexII = getRandomIndex()
 
       while (
         randomIndexI === randomIndexII ||
         (playerOne === randomIndexI && playerTwo === randomIndexII)
       ) {
-        randomIndexI = getRandomIndex();
-        randomIndexII = getRandomIndex();
+        randomIndexI = getRandomIndex()
+        randomIndexII = getRandomIndex()
       }
 
-      setPlayerOne(randomIndexI);
-      setPlayerTwo(randomIndexII);
-    }
-
-    else {
+      setPlayerOne(randomIndexI)
+      setPlayerTwo(randomIndexII)
+    } else {
       if (currentIndex < Userz.length - 1) {
         setPlayerOne(currentIndex)
         setPlayerTwo(currentIndex + 1)
@@ -38,25 +35,24 @@ function QuestionScreen({
         setPlayerTwo(0)
         setCurrentIndex(currentIndex + 1)
       }
-
     }
   }
   function getRandomIndex() {
-    return Math.floor(Math.random() * Userz.length);
+    return Math.floor(Math.random() * Userz.length)
   }
 
   return (
     <>
       <h2>{Userz[playerOne].name}</h2>
-      <h3>اسأله سؤال وحاول توقعة</h3>
+      <h3 className="margin">اسأله سؤال وحاول توقعة</h3>
       <h2>{Userz[playerTwo].name}</h2>
       <div className="card">
         <button className="next" onClick={() => idUpdater()}>
           اللي بعده
         </button>
-          <button className="next" onClick={setNextScreen}>
-            صوت
-          </button>
+        <button className="next" onClick={setNextScreen}>
+          صوت
+        </button>
       </div>
     </>
   )

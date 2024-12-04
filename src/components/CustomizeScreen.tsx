@@ -20,6 +20,7 @@ function CustomizeScreen({
   const [newCategoryName, setNewCategoryName] = useState('')
   const [newItemName, setNewItemName] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [saveError, setSaveError] = useState<string | null>(null)
 
   const handleAddCategory = () => {
     if (newCategoryName) {
@@ -36,7 +37,9 @@ function CustomizeScreen({
   }
 
   const handleAddItem = () => {
-    if (newItemName.trim()==""){return}
+    if (newItemName.trim() == '') {
+      return
+    }
     if (selectedCategory && newItemName) {
       setCategories(
         categories.map((cat) =>
@@ -60,6 +63,27 @@ function CustomizeScreen({
   }
 
   const handleSave = () => {
+    // Check if each category has at least 5 items
+    const categoriesWithLessThan5Items = categories.filter(
+      (category) => category.names.length < 5
+    )
+
+    if (categoriesWithLessThan5Items.length > 0) {
+      // Generate error message listing categories with insufficient items
+      const insufficientCategories = categoriesWithLessThan5Items
+        .map((cat) => `${cat.category} (${cat.names.length} عنصر)`)
+        .join(', ')
+
+      setSaveError(
+        `لازم يكون لكل حزمة 5 عناصر على الأقل. الحزم الناقصة: ${insufficientCategories}`
+      )
+      return
+    }
+
+    // Clear any previous errors
+    setSaveError(null)
+
+    // Proceed with saving
     onSaveChanges(categories)
     onBack()
   }
@@ -129,6 +153,15 @@ function CustomizeScreen({
             )}
           </div>
         ))}
+
+        {saveError && (
+          <div
+            className="error-message"
+            style={{ color: 'red', marginBottom: '10px' }}
+          >
+            {saveError}
+          </div>
+        )}
       </div>
 
       <div className="save-buttons">
