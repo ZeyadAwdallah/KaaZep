@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react'
 import CustomizeScreen from './CustomizeScreen'
-import { saveStagestoLocalStorage,loadStagesFromLocalStorage } from '../utils/storage'
+import {
+  saveStagestoLocalStorage,
+  loadStagesFromLocalStorage,
+} from '../utils/storage'
 
-interface category {
+interface Category {
   category: string
   names: string[]
 }
 
 interface StagesScreenProps {
   onGameBack: () => void
-  handleRandomName: (randomName: string, name: string[]) => void
+  handleRandomName: (randomName: string, names: string[]) => void
 }
 
 function StagesScreen({ onGameBack, handleRandomName }: StagesScreenProps) {
-  const [currentStages, setCurrentStages] = useState<category[]>([])
+  const [currentStages, setCurrentStages] = useState<Category[]>([])
   const [isCustomizing, setIsCustomizing] = useState(false)
 
   useEffect(() => {
@@ -27,25 +30,19 @@ function StagesScreen({ onGameBack, handleRandomName }: StagesScreenProps) {
     }
   }, [])
 
-  const getRandomNameFromStage = (stage: string[]): string => {
-    const randomIndex = Math.floor(Math.random() * stage.length)
-    return stage[randomIndex]
+  // Fisher-Yates shuffle algorithm
+  const shuffleArray = (array: string[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[array[i], array[j]] = [array[j], array[i]]
+    }
+    return array
   }
 
-  const getRandomNamesFromStage = (stage: category): string[] => {
-    let names: string[] = []
-    let fake: number = -1
-    for (let i: number = 0; i < 5; i++) {
-      let randomIndex = Math.floor(Math.random() * stage.names.length)
-      if (randomIndex != fake) {
-        names.push(stage.names[randomIndex])
-      } else {
-        randomIndex = randomIndex - 1
-        names.push(stage.names[randomIndex])
-      }
-      fake = randomIndex
-    }
-    return names
+  const getRandomNamesFromStage = (stage: Category): string[] => {
+    const namesCopy = [...stage.names]
+    const shuffled = shuffleArray(namesCopy)
+    return shuffled.slice(0, 5)
   }
 
   const handleStage = (selectedCategory: string) => {
@@ -54,7 +51,7 @@ function StagesScreen({ onGameBack, handleRandomName }: StagesScreenProps) {
     )
     if (selectedStage) {
       const randomNames = getRandomNamesFromStage(selectedStage)
-      const randomName = getRandomNameFromStage(randomNames)
+      const randomName = randomNames[Math.floor(Math.random() * 5)]
       handleRandomName(randomName, randomNames)
     }
   }
@@ -63,7 +60,7 @@ function StagesScreen({ onGameBack, handleRandomName }: StagesScreenProps) {
     setIsCustomizing(true)
   }
 
-  const handleSaveChanges = (updatedStages: category[]) => {
+  const handleSaveChanges = (updatedStages: Category[]) => {
     setCurrentStages(updatedStages)
     saveStagestoLocalStorage(updatedStages)
   }

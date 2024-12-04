@@ -99,6 +99,7 @@ function HomeScreen({
             onClick={() => {
               if (Users.length < 3) {
                 setError(true)
+
                 setTimeout(() => {
                   setError(false)
                 }, 1000)
