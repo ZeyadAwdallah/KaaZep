@@ -155,12 +155,7 @@ function CustomizeScreen({
         ))}
 
         {saveError && (
-          <div
-            className="error-message"
-            style={{ color: 'red', marginBottom: '10px' }}
-          >
-            {saveError}
-          </div>
+          <div style={{ color: 'red', marginBottom: '10px' }}>{saveError}</div>
         )}
       </div>
 

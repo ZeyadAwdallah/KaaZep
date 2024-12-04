@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import StagesScreen from './components/StagesScreen'
 import HomeScreen from './components/HomeScreen'
 import QuestionScreen from './components/QuestionScreen'
@@ -14,12 +14,23 @@ interface User {
   score: number
   Imposter: boolean
 }
+
 function App() {
+  // Load users from local storage on initial render
+  const [Users, setUsers] = useState<User[]>(() => {
+    const savedUsers = localStorage.getItem('gameUsers')
+    return savedUsers ? JSON.parse(savedUsers) : []
+  })
+
   const [currentScreen, setCurrentScreen] = useState<Screen>(Screen.Home)
   const [players, setPlayers] = useState<string[]>([])
   const [selectedStageNames, setSelectedStageNames] = useState<string[]>([])
   const [selectedQuest, setSelectedQuest] = useState<string>('')
-  const [Users, setUsers] = useState<User[]>([])
+
+  // Save users to local storage whenever Users state changes
+  useEffect(() => {
+    localStorage.setItem('gameUsers', JSON.stringify(Users))
+  }, [Users])
 
   const theImposter = () => {
     const randomIndex = Math.floor(Math.random() * Users.length)
@@ -94,6 +105,7 @@ function App() {
         <VoteScreen
           Userz={Users}
           setNextScreen={() => navigateTo(Screen.Imposter)}
+          setUserz={setUsers}
         />
       )
     case Screen.Imposter:
@@ -103,6 +115,7 @@ function App() {
           setNextScreen={() => navigateTo(Screen.Result)}
           selectedStage={selectedStageNames}
           Userz={Users}
+          setUserz={setUsers}
         />
       )
     case Screen.Result:

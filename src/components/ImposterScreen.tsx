@@ -1,19 +1,32 @@
+import { useState } from 'react'
+
 function ImposterScreen({
   setNextScreen,
   quest,
   selectedStage,
   Userz,
+  setUserz,
 }: {
   quest: string
   selectedStage: string[]
   setNextScreen: () => void
   Userz: { name: string; Id: number; score: number; Imposter: boolean }[]
+  setUserz: React.Dispatch<
+    React.SetStateAction<
+      { name: string; Id: number; score: number; Imposter: boolean }[]
+    >
+  >
 }) {
   const imposterUser = Userz.find((user) => user.Imposter === true)
-  console.log(imposterUser, Userz)
+
   function handelImposterScore(name: string) {
     if (name === quest && imposterUser) {
-      Userz[imposterUser.Id].score += 100
+      const updatedUser = Userz.map((user) =>
+        user.Id === imposterUser.Id
+          ? { ...user, score: user.score + 100 }
+          : user
+      )
+      setUserz(updatedUser)
     }
     setNextScreen()
   }
@@ -22,8 +35,8 @@ function ImposterScreen({
     <>
       {imposterUser && (
         <>
-            <h2>{imposterUser.name}</h2>
-            <h2>الكلام على ايه</h2>
+          <h2>{imposterUser.name}</h2>
+          <h2>الكلام على ايه</h2>
           <div className="stages">
             {selectedStage.map((name, index) => (
               <div className="stage" key={index}>

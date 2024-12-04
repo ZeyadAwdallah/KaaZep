@@ -18,56 +18,52 @@ function HomeScreen({
   Users: { name: string; Id: number; score: number; Imposter: boolean }[]
 }) {
   const [playerName, setPlayerName] = useState<string>('')
-  const [Id, setId] = useState<number>(0)
   const [editingIndex, setEditingIndex] = useState<number | null>(null)
-
+  const [error, setError] = useState<boolean>(false)
   useEffect(() => {
-    const updatedUsers = handleUsers()
-    setUsers(updatedUsers)
-  }, [players])
+    setPlayers(Users.map((user) => user.name))
+  }, [Users])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPlayerName(e.target.value)
   }
 
-  function generateId() {
-    setId(Id + 1)
-    return Id
-  }
-
-  function handleUsers() {
-    return players.map((player) => {
-      const existingUser = Users.find((user) => user.name === player)
-      return existingUser
-        ? { ...existingUser }
-        : { name: player, Id: generateId(), score: 0, Imposter: false }
-    })
-  }
-
   const playerNameSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!playerName.trim()) {
-      return
-    }
+    if (!playerName.trim()) return
 
     if (editingIndex !== null) {
-      // Edit existing player
       const updatedPlayers = [...players]
       updatedPlayers[editingIndex] = playerName
       setPlayers(updatedPlayers)
+
+      const updatedUsers = Users.map((user, index) =>
+        index === editingIndex ? { ...user, name: playerName } : user
+      )
+      setUsers(updatedUsers)
       setEditingIndex(null)
     } else {
-      // Add new player
+      const newUser = {
+        name: playerName,
+        Id: Users.length > 0 ? Users[Users.length - 1].Id + 1 : 1,
+        score: 0,
+        Imposter: false,
+      }
       setPlayers([...players, playerName])
+      setUsers([...Users, newUser])
     }
 
     setPlayerName('')
   }
 
   const playerDelete = (index: number) => {
-    const updatedPlayers: string[] = [...players]
+    const updatedPlayers = [...players]
     updatedPlayers.splice(index, 1)
     setPlayers(updatedPlayers)
+
+    const updatedUsers = [...Users]
+    updatedUsers.splice(index, 1)
+    setUsers(updatedUsers)
   }
 
   const playerEdit = (index: number) => {
@@ -77,66 +73,75 @@ function HomeScreen({
 
   return (
     <>
-      <div>
-        <div id="details">
-          <img src="./icons/Kaazep.svg" alt="" id="logo" />
-          <p className="info">
-            لعبة الموبايل بيلف عليكم فتسأل فتعرف مين بيحور{' '}
-          </p>
-        </div>
-
-        <form onSubmit={playerNameSubmit}>
-          <p className="Welcome">أهلا بيك في لعبتنا</p>
-          <p>عشان تلعب لازم تكونوا علي الاقل ٣</p>
-          <div className="card">
-            <input
-              type="text"
-              id="players"
-              minLength={3}
-              maxLength={16}
-              value={playerName}
-              onChange={handleInputChange}
-              placeholder={
-                editingIndex !== null ? 'تعديل اللاعب' : 'اسم اللاعب'
-              }
-            />
-            <button type="submit">
-              {editingIndex !== null ? 'حفظ التعديل' : 'ضيف لاعب'}
-            </button>
-            <button id="start" onClick={onGameStart}>
-              ابدأ
-            </button>
-          </div>
-        </form>
-        <div>
-          <h2>اللعيبة</h2>
-          <div className="players">
-            {players.map((text, index) => (
-              <div className="player" key={index}>
-                <p id="name">{text}</p>
-                <div className="player-actions">
-                  <button
-                    type="button"
-                    id="edit"
-                    onClick={() => playerEdit(index)}
-                  >
-                    عدل
-                  </button>
-                  <button
-                    type="submit"
-                    id="delete"
-                    onClick={() => playerDelete(index)}
-                  >
-                    أمسح
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div id="details">
+        <img src="./icons/Kaazep.svg" alt="" id="logo" />
+        <p className="info">لعبة الموبايل بيلف عليكم فتسأل فتعرف مين بيحور</p>
       </div>
+
+      <form onSubmit={playerNameSubmit}>
+        <p className="Welcome">أهلا بيك في لعبتنا</p>
+        <p>عشان تلعب لازم تكونوا علي الاقل ٣</p>
+        <div className="card">
+          <input
+            type="text"
+            id="players"
+            minLength={3}
+            maxLength={16}
+            value={playerName}
+            onChange={handleInputChange}
+            placeholder={editingIndex !== null ? 'تعديل اللاعب' : 'اسم اللاعب'}
+          />
+          <button type="submit">
+            {editingIndex !== null ? 'حفظ التعديل' : 'ضيف لاعب'}
+          </button>
+          <button
+            id="start"
+            onClick={() => {
+              if (Users.length < 3) {
+                setError(true)
+                setTimeout(() => {
+                  setError(false)
+                }, 1000)
+              } else {
+                setError(false)
+                onGameStart()
+              }
+            }}
+            type="button"
+          >
+            ابدأ
+          </button>
+        </div>
+      </form>
+
+      <h2>اللعيبة</h2>
+      <div className="players">
+        {players.map((text, index) => (
+          <div className="player" key={index}>
+            <p id="name">{text}</p>
+            <div className="player-actions">
+              <button type="button" id="edit" onClick={() => playerEdit(index)}>
+                عدل
+              </button>
+              <button
+                type="button"
+                id="delete"
+                onClick={() => playerDelete(index)}
+              >
+                أمسح
+              </button>
+            </div>
+          </div>
+        ))}
+        {error && (
+          <p style={{ color: 'red', marginBottom: '10px' }}>
+            مقولنا عشان تلعب لازم ٣ معاك
+          </p>
+        )}
+      </div>
+
       <p>
-        اللعبة دي اتعملت من{'  '}
+        اللعبة دي اتعملت من{' '}
         <a href="https://x.com/ZeyadAwdallah" target="blank">
           @ زيو
         </a>
