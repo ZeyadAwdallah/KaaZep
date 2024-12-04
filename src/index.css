@@ -128,6 +128,7 @@ input[type='text'] {
 }
 
 input[type='text']:focus {
+  color: var(--color-primary);
   border-color: var(--color-border-focus);
   outline: none;
 }

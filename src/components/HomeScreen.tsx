@@ -76,60 +76,72 @@ function HomeScreen({
   }
 
   return (
-    <div>
-      <div id="details">
-        <img src="./icons/Kaazep.svg" alt="" id="logo" />
-        <p className="info">لعبة الموبايل بيلف عليكم فتسأل فتعرف مين بيحور </p>
-      </div>
-
-      <form onSubmit={playerNameSubmit}>
-        <p className="Welcome">أهلا بيك في لعبتنا</p>
-        <p>عشان تلعب لازم تكونوا علي الاقل ٣</p>
-        <div className="card">
-          <input
-            type="text"
-            id="players"
-            minLength={3}
-            maxLength={16}
-            value={playerName}
-            onChange={handleInputChange}
-            placeholder={editingIndex !== null ? 'تعديل اللاعب' : 'اسم اللاعب'}
-          />
-          <button type="submit">
-            {editingIndex !== null ? 'حفظ التعديل' : 'ضيف لاعب'}
-          </button>
-          <button id="start" onClick={onGameStart}>
-            ابدأ
-          </button>
-        </div>
-      </form>
+    <>
       <div>
-        <h2>اللعيبة</h2>
-        <div className="players">
-          {players.map((text, index) => (
-            <div className="player" key={index}>
-              <p id="name">{text}</p>
-              <div className="player-actions">
-                <button
-                  type="button"
-                  id="edit"
-                  onClick={() => playerEdit(index)}
-                >
-                  عدل
-                </button>
-                <button
-                  type="submit"
-                  id="delete"
-                  onClick={() => playerDelete(index)}
-                >
-                  أمسح
-                </button>
+        <div id="details">
+          <img src="./icons/Kaazep.svg" alt="" id="logo" />
+          <p className="info">
+            لعبة الموبايل بيلف عليكم فتسأل فتعرف مين بيحور{' '}
+          </p>
+        </div>
+
+        <form onSubmit={playerNameSubmit}>
+          <p className="Welcome">أهلا بيك في لعبتنا</p>
+          <p>عشان تلعب لازم تكونوا علي الاقل ٣</p>
+          <div className="card">
+            <input
+              type="text"
+              id="players"
+              minLength={3}
+              maxLength={16}
+              value={playerName}
+              onChange={handleInputChange}
+              placeholder={
+                editingIndex !== null ? 'تعديل اللاعب' : 'اسم اللاعب'
+              }
+            />
+            <button type="submit">
+              {editingIndex !== null ? 'حفظ التعديل' : 'ضيف لاعب'}
+            </button>
+            <button id="start" onClick={onGameStart}>
+              ابدأ
+            </button>
+          </div>
+        </form>
+        <div>
+          <h2>اللعيبة</h2>
+          <div className="players">
+            {players.map((text, index) => (
+              <div className="player" key={index}>
+                <p id="name">{text}</p>
+                <div className="player-actions">
+                  <button
+                    type="button"
+                    id="edit"
+                    onClick={() => playerEdit(index)}
+                  >
+                    عدل
+                  </button>
+                  <button
+                    type="submit"
+                    id="delete"
+                    onClick={() => playerDelete(index)}
+                  >
+                    أمسح
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <p>
+        اللعبة دي اتعملت من{'  '}
+        <a href="https://x.com/ZeyadAwdallah" target="blank">
+          @ زيو
+        </a>
+      </p>
+    </>
   )
 }
 
