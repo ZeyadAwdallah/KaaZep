@@ -116,30 +116,34 @@ function HomeScreen({
       </form>
 
       <h2>اللعيبة</h2>
-      <div className="players">
-        {players.map((text, index) => (
-          <div className="player" key={index} style={{ paddingInline: '0.75rem' }}>
-            <p id="name">{text}</p>
-            <div className="player-actions">
-              <button type="button" id="edit" onClick={() => playerEdit(index)}>
-                عدل
-              </button>
-              <button
-                type="button"
-                id="delete"
-                onClick={() => playerDelete(index)}
-              >
-                أمسح
-              </button>
+      {players.length === 0 ? (
+        <p style={{ marginBottom: '1.5rem' }}>لسه مفيش لعيبة، ابدأ ضيف من فوق.</p>
+      ) : (
+        <div className="players">
+          {players.map((text, index) => (
+            <div className="player" key={index} style={{ paddingInline: '0.75rem' }}>
+              <p id="name">{text}</p>
+              <div className="player-actions">
+                <button type="button" id="edit" onClick={() => playerEdit(index)}>
+                  عدل
+                </button>
+                <button
+                  type="button"
+                  id="delete"
+                  onClick={() => playerDelete(index)}
+                >
+                  أمسح
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-        {error && (
-          <p style={{ color: 'red', marginBottom: '10px' }}>
-            مقولنا عشان تلعب لازم ٣ معاك
-          </p>
-        )}
-      </div>
+          ))}
+          {error && (
+            <p style={{ color: 'red', marginBottom: '10px' }}>
+              مقولنا عشان تلعب لازم ٣ معاك
+            </p>
+          )}
+        </div>
+      )}
 
       <p>
         اللعبة دي اتعملت من{' '}
