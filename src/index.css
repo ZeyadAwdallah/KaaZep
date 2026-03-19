@@ -202,6 +202,12 @@ input[type='text']:focus {
   grid-gap: 1rem;
   margin-bottom: var(--spacing-xlarge);
 }
+
+.player-actions {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
 .hero {
   margin: var(--spacing-xlarge);
 }
@@ -383,4 +389,32 @@ input[type='text']:focus {
   color: var(--color-primary);
   padding: 8px;
   width: 60%;
+}
+
+@media (max-width: 600px) {
+  #root {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
+  input[type='text'] {
+    width: 100%;
+    box-sizing: border-box;
+    margin-inline: 0;
+  }
+
+  .players {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 100%;
+  }
+
+  .player-actions {
+    justify-content: center;
+  }
 }

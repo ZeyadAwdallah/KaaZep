@@ -74,14 +74,14 @@ function HomeScreen({
   return (
     <>
       <div id="details">
-        <img src="./icons/Kaazep.svg" alt="" id="logo" />
+        <img src={`${import.meta.env.BASE_URL}icons/Kaazep.svg`} alt="" id="logo" />
         <p className="info">لعبة الموبايل بيلف عليكم فتسأل فتعرف مين بيحور</p>
       </div>
 
       <form onSubmit={playerNameSubmit}>
         <p className="Welcome">أهلا بيك في لعبتنا</p>
         <p>عشان تلعب لازم تكونوا علي الاقل ٣</p>
-        <div className="card">
+        <div  className="card">
           <input
             type="text"
             id="players"
@@ -118,7 +118,7 @@ function HomeScreen({
       <h2>اللعيبة</h2>
       <div className="players">
         {players.map((text, index) => (
-          <div className="player" key={index}>
+          <div className="player" key={index} style={{ paddingInline: '0.75rem' }}>
             <p id="name">{text}</p>
             <div className="player-actions">
               <button type="button" id="edit" onClick={() => playerEdit(index)}>

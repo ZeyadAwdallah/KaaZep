@@ -115,8 +115,18 @@ function CustomizeScreen({
               <button onClick={() => handleDeleteCategory(category.category)}>
                 امسح الحزمة{' '}
               </button>
-              <button onClick={() => setSelectedCategory(category.category)}>
-                عدل الحزمة
+              <button
+                onClick={() => {
+                  if (selectedCategory === category.category) {
+                    setSelectedCategory(null)
+                    setNewItemName('')
+                    return
+                  }
+                  setSelectedCategory(category.category)
+                  setNewItemName('')
+                }}
+              >
+                {selectedCategory === category.category ? 'اقفل' : 'عدل الحزمة'}
               </button>
             </div>
             {selectedCategory === category.category && (
