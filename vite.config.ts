@@ -4,9 +4,12 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // For GitHub Pages: set BASE_PATH to "/<repo-name>/" in CI.
-  // Locally it defaults to "/".
-  base: process.env.BASE_PATH ?? '/',
+  // GitHub Pages is served from /KaaZep/
+  base: '/KaaZep/',
+  build: {
+    // So we can deploy from the docs folder on main
+    outDir: 'docs',
+  },
   plugins: [
     react(),
     VitePWA({
